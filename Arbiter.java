@@ -92,18 +92,21 @@ public class Arbiter {
 					String arg1 = sections[1];
 					String arg2 = sections[3];
 
-					if (!arg1.contains(".") && !arg2.contains(".")) {
-						if (sections.length == 6) {
-							arg1 += "." + sections[5];
-							arg2 += "." + sections[5];
-						}
+					if (arg1.contains(".") && arg1.contains(".")) {
+
 					} else if (arg1.contains(".")) {
 						String[] parts = arg1.split("\\.");
 						arg2 += "." + parts[1];
 					} else if (arg2.contains(".")) {
 						String[] parts = arg2.split("\\.");
 						arg1 += "." + parts[1];
+					} else {
+						if (sections.length == 6) {
+							arg1 += "." + sections[5];
+							arg2 += "." + sections[5];
+						}
 					}
+
 					arg1 = textFile(arg1, false);
 					arg2 = textFile(arg2, false);
 					equallsfiles(arg1, arg2, true);
@@ -385,17 +388,17 @@ public class Arbiter {
 	}
 
 	private static boolean fullPipeline(String file, boolean verbose) throws IOException, ArrayIndexOutOfBoundsException  {
-      String textFile = file;
-      String codeFile = ".code.notoque";
-      String shortFile = ".short.notoque";
-      String resultTextFile = ".txt.notoque";
-      
+		String textFile = file;
+		String codeFile = ".code.notoque";
+		String shortFile = ".short.notoque";
+		String resultTextFile = ".txt.notoque";
+
 		if (verbose)
 			System.out.println("Running the full pipeline on " + file);
 
 		code(file, codeFile, true);
 		encode(file, shortFile, codeFile, true);
-      decode(shortFile, resultTextFile, codeFile, true);
+		decode(shortFile, resultTextFile, codeFile, true);
 		boolean result = equallsfiles(file, resultTextFile, false);
 
 		if (verbose) {
