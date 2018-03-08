@@ -58,22 +58,22 @@ are  *output and *hamlet equal
 
 Test the Contructor(int[]) and print functions (These can not be otherwise tested separately)
 ```
-are (put code for *hamlet into test) and *hamlet equal
+are (put code for *hamlet into test) and *hamlet.code equal
 ```
 
 Test the the Constructor(Scanner) method
 ```
-are ((object *hamlet) print code to test) and *hamlet equal
+are ((object *hamlet) print code to test) and *hamlet.code equal
 ```
 
 Test the decode method
 ```
-are ((object *hamlet.code) decode *hamlet into test) and *hamlet equal
+are ((object *hamlet.code) decode *hamlet into test) and *hamlet.txt equal
 ```
 
 Test encode in a more detailed manner
 ```
-are (encode *hamlet into test1 using (put code for *hamlet into test1)) and *hamlet equal
+are (encode *hamlet into test1 using (put code for *hamlet into test1)) and *hamlet.short equal
 ```
 
 Test your whole system against both hamlet and short
